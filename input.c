@@ -5,7 +5,6 @@ int readLine(const char *prompt, char *out, size_t size)
 for (;;) {
 fputs(prompt, stdout);
 fflush(stdout);
-/* fgets leaves room for the terminating zero character. */
 if (!fgets(out, (int)size, stdin)) return 0;
 size_t n = strcspn(out, "\r\n");
 if (out[n]) {
@@ -13,7 +12,6 @@ out[n] = '\0';
 return 1;
 }
 if (n < size - 1) return 1;
-/* Discard the rest of an overlong answer before retrying. */
 int c = getchar();
 if (c == '\n' || c == EOF) return 1;
 while (c != '\n' && c != EOF) c = getchar();
