@@ -3,16 +3,15 @@
 // Weight Converter
 void convertWeight(double value, int toPounds, double *out)
 {
-    if(!out)
-    return;
-    if(toPounds){
-    *out=value*KG_TO_LB;
-    }
+    if (!out)
+        return;
+    if (toPounds)
+        *out = value * KG_TO_LB;
     else
-    *out=value/KG_TO_LB;
+        *out = value / KG_TO_LB;
 }
 
-//Calorie Calculator
+// Calorie Calculator
 void calculateCalories(void)
 {
     double currentWeight, goalWeight, maintenanceCalories;
@@ -29,25 +28,25 @@ void calculateCalories(void)
     else
         calorieFactor = 3500;
 
-double minWeight = 10.0;
-double maxCurrentWeight = 300.0;
-double maxGoalWeight = 400.0;
+    double minWeight = 10.0;
+    double maxCurrentWeight = 300.0;
+    double maxGoalWeight = 400.0;
 
-if (unit == 2)
-{
-    minWeight *= KG_TO_LB;
-    maxCurrentWeight *= KG_TO_LB;
-    maxGoalWeight *= KG_TO_LB;
-}
+    if (unit == 2)
+    {
+        minWeight *= KG_TO_LB;
+        maxCurrentWeight *= KG_TO_LB;
+        maxGoalWeight *= KG_TO_LB;
+    }
 
     if (!readDouble(unit == 1 ? "Current weight (kg): " : "Current weight (lb): ", minWeight, maxCurrentWeight, &currentWeight) ||
 
-    !readDouble(unit == 1 ? "Goal weight (kg): " : "Goal weight (lb): ",minWeight, maxGoalWeight, &goalWeight) ||
+        !readDouble(unit == 1 ? "Goal weight (kg): " : "Goal weight (lb): ", minWeight, maxGoalWeight, &goalWeight) ||
 
-    !readDouble("Maintenance calories (kcal/day): ",1, 10000, &maintenanceCalories) ||
+        !readDouble("Maintenance calories (kcal/day): ", 1, 10000, &maintenanceCalories) ||
 
-    !readDouble("Duration (months): ",0.01, 120, &months))
-    return;
+        !readDouble("Duration (months): ", 0.01, 120, &months))
+        return;
 
     double weightDifference = goalWeight - currentWeight;
     double days = months * 30.44;
@@ -68,7 +67,7 @@ if (unit == 2)
     {
         puts("\n--- BULKING PLAN ---");
 
-        printf("Weight to gain: %.2f %s | %.2f %s\n",amount, selectedUnit,convertedDifference, otherUnit);
+        printf("Weight to gain: %.2f %s | %.2f %s\n", amount, selectedUnit, convertedDifference, otherUnit);
 
         printf("Target duration: %.1f months\n", months);
         printf("Estimated daily calories: %.0f kcal\n", dailyCalories);
@@ -78,7 +77,7 @@ if (unit == 2)
     {
         puts("\n--- CUTTING PLAN ---");
 
-        printf("Weight to lose: %.2f %s | %.2f %s\n",amount, selectedUnit,convertedDifference, otherUnit);
+        printf("Weight to lose: %.2f %s | %.2f %s\n", amount, selectedUnit, convertedDifference, otherUnit);
 
         printf("Target duration: %.1f months\n", months);
         printf("Estimated daily calories: %.0f kcal\n", dailyCalories);
@@ -89,7 +88,7 @@ if (unit == 2)
         puts("\n--- MAINTENANCE PLAN ---");
         puts("You are already at your goal weight.");
 
-        printf("Estimated daily calories: %.0f kcal\n",maintenanceCalories);
+        printf("Estimated daily calories: %.0f kcal\n", maintenanceCalories);
     }
 
     else
@@ -99,14 +98,12 @@ if (unit == 2)
     }
 }
 
-
-//Workout Plan Generator
+// Workout Plan Generator
 void generatePlan(void)
 {
     const char *groups[] = {
         "Chest", "Back", "Shoulders", "Biceps",
-        "Triceps", "Legs", "Abs"
-    };
+        "Triceps", "Legs", "Abs"};
 
     const char *movements[7][3] = {
         {"Flat press", "Incline press", "Fly"},
@@ -115,91 +112,87 @@ void generatePlan(void)
         {"Curl", "Hammer curl", "Preacher curl"},
         {"Pushdown", "Overhead extension", "Lying extension"},
         {"Squat", "Hip hinge", "Leg press"},
-        {"Crunch", "Reverse crunch", "Core exercise"}
-    };
+        {"Crunch", "Reverse crunch", "Core exercise"}};
 
     const char *exerciseOptions[7][3][2] = {
-        {
-            {"Dumbbell flat press", "Barbell flat press"},
-            {"Incline dumbbell press", "Incline barbell press"},
-            {"Cable fly", "Pec Dec fly"}
-        },
-        {
-            {"Lat pulldown", "Pull Ups"},
-            {"Barbell row", "Dumbbell row"},
-            {"Seated cable row", "Dumbbell Row"}
-        },
-        {
-            {"Dumbbell overhead press", "Barbell overhead press"},
-            {"Dumbbell lateral raise", "Cable lateral raise"},
-            {"Reverse dumbbell fly", "Face Pulls"}
-        },
-        {
-            {"Dumbbell curl", "Barbell curl"},
-            {"Dumbbell hammer curl", "Cable hammer curl"},
-            {"Incline Dumbbell Curl", "Bayesian Curl"}
-        },
-        {
-            {"Tricep Extension", "Closegrip Benchpress"},
-            {"Overhead cable extension", "Overhead dumbbell extension"},
-            {"Single arm Tricep pushdown", "Dumbell Tricep kickbacks"}
-        },
-        {
-            {"Barbell squat", "Leg Press"},
-            {"Romanian deadlift", "Hamstring Curl"},
-            {"Lunges", "Bulgarian Split Squats"}
-        },
-        {
-            {"Body weight Crunches", "Cable crunches"},
-            {"Leg Raises", "Hanging knee raise"},
-            {"Dragon Flag", "Plank"}
-        }
-    };
+        {{"Dumbbell flat press", "Barbell flat press"},
+         {"Incline dumbbell press", "Incline barbell press"},
+         {"Cable fly", "Pec Dec fly"}},
+        {{"Lat pulldown", "Pull Ups"},
+         {"Barbell row", "Dumbbell row"},
+         {"Seated cable row", "Dumbbell Row"}},
+        {{"Dumbbell overhead press", "Barbell overhead press"},
+         {"Dumbbell lateral raise", "Cable lateral raise"},
+         {"Reverse dumbbell fly", "Face Pulls"}},
+        {{"Dumbbell curl", "Barbell curl"},
+         {"Dumbbell hammer curl", "Cable hammer curl"},
+         {"Incline Dumbbell Curl", "Bayesian Curl"}},
+        {{"Tricep Extension", "Closegrip Benchpress"},
+         {"Overhead cable extension", "Overhead dumbbell extension"},
+         {"Single arm Tricep pushdown", "Dumbell Tricep kickbacks"}},
+        {{"Barbell squat", "Leg Press"},
+         {"Romanian deadlift", "Hamstring Curl"},
+         {"Lunges", "Bulgarian Split Squats"}},
+        {{"Body weight Crunches", "Cable crunches"},
+         {"Leg Raises", "Hanging knee raise"},
+         {"Dragon Flag", "Plank"}}};
 
     int groupCount;
 
     if (!readInt("How many muscle groups do you want to train (1-4)? ",
-                 1, 4, &groupCount)) {
+                 1, 4, &groupCount))
+    {
         return;
     }
 
     int setsPerExercise;
 
-    if (groupCount == 1) {
+    if (groupCount == 1)
+    {
         setsPerExercise = 6;
-    } else if (groupCount == 2) {
+    }
+    else if (groupCount == 2)
+    {
         setsPerExercise = 3;
-    } else {
+    }
+    else
+    {
         setsPerExercise = 2;
     }
 
     puts("\nMuscle groups:");
-    for (int i = 0; i < 7; ++i) {
+    for (int i = 0; i < 7; ++i)
+    {
         printf("%d. %s\n", i + 1, groups[i]);
     }
 
     int selectedGroups[4];
     int selectedCount = 0;
 
-    while (selectedCount < groupCount) {
+    while (selectedCount < groupCount)
+    {
         int choice;
 
         printf("Choose muscle group %d of %d: ",
                selectedCount + 1, groupCount);
 
-        if (!readInt("", 1, 7, &choice)) {
+        if (!readInt("", 1, 7, &choice))
+        {
             return;
         }
 
         int alreadySelected = 0;
-        for (int i = 0; i < selectedCount; ++i) {
-            if (selectedGroups[i] == choice) {
+        for (int i = 0; i < selectedCount; ++i)
+        {
+            if (selectedGroups[i] == choice)
+            {
                 alreadySelected = 1;
                 break;
             }
         }
 
-        if (alreadySelected) {
+        if (alreadySelected)
+        {
             puts("That group is already selected. Choose a different one.");
             continue;
         }
@@ -209,18 +202,21 @@ void generatePlan(void)
 
     int selectedOptions[4][3];
 
-    for (int i = 0; i < groupCount; ++i) {
+    for (int i = 0; i < groupCount; ++i)
+    {
         int groupIndex = selectedGroups[i] - 1;
 
         printf("\nChoose exercises for %s:\n", groups[groupIndex]);
 
-        for (int j = 0; j < 3; ++j) {
+        for (int j = 0; j < 3; ++j)
+        {
             printf("%s:\n", movements[groupIndex][j]);
             printf("  1. %s\n", exerciseOptions[groupIndex][j][0]);
             printf("  2. %s\n", exerciseOptions[groupIndex][j][1]);
 
             if (!readInt("Option (1-2): ", 1, 2,
-                         &selectedOptions[i][j])) {
+                         &selectedOptions[i][j]))
+            {
                 return;
             }
         }
@@ -229,15 +225,17 @@ void generatePlan(void)
     puts("\nWorkout plan:");
     puts("Exercise                           Sets  Reps   Rest(seconds)");
 
-    for (int i = 0; i < groupCount; ++i) {
+    for (int i = 0; i < groupCount; ++i)
+    {
         int groupIndex = selectedGroups[i] - 1;
 
         printf("\n%s:\n", groups[groupIndex]);
 
-        for (int j = 0; j < 3; ++j) {
+        for (int j = 0; j < 3; ++j)
+        {
             int optionIndex = selectedOptions[i][j] - 1;
 
-            printf("%-34s %4d  8-12   90\n",
+            printf("%-34s %4d  8-12 or to failure   180\n",
                    exerciseOptions[groupIndex][j][optionIndex],
                    setsPerExercise);
         }
