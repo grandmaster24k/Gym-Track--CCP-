@@ -1,3 +1,5 @@
+(In progress..)
+
 Project introduction:
 GymTrack is a Health/Gym Tracker.It is a console-based gym tracking system written in C that records the weight used on each
 exercise, builds a simple workout plan, and calculates daily calorie targets. All weights are shown in
