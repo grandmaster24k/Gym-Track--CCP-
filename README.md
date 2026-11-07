@@ -1,31 +1,56 @@
-(In progress..)
+ GymTrack – Gym & Health Tracker
 
-Project introduction:
-GymTrack is a Health/Gym Tracker.It is a console-based gym tracking system written in C that records the weight used on each
-exercise, builds a simple workout plan, and calculates daily calorie targets. All weights are shown in
-both kg and lb, and all data is saved to files so it persists between sessions.
+(In Progress..)
 
-It used a "tracker.h" library which has all the functions in it so they can be used later in the main program.
-in addition there are multiple .C files which all serve different purpose.
+📌 Project Introduction
 
-features.c --> functions with features like calorie converter , plan generator etc
-input.c --> for input validation and error handling while taking input.
-workout.c --> sorting and finding workout entries
-storage.c --> for storing workout data to be displayed later
-main.c --> will contain the main C program
+GymTrack is a console-based Gym & Health Tracking System developed in C. It is designed to help users track their workouts, monitor exercise progress, generate workout plans, and estimate daily calorie requirements.
 
-The menu Will be Like:
-1. Log sets
-2. View history
-3. Search
-4. Sort history
-5. Edit entry
-6. Delete entry
-7. Workout plans
-8. Calorie estimate
-9. Personal records
-10.Save data
-11. Load data
-0. Exit (save first)
+The system records the weights used for each exercise, creates simple workout plans, and calculates daily calorie targets. All weights are displayed in both kilograms (kg) and pounds (lb).
 
-It is part of our 1rst year CCP(Complex Coding Project) at Ned University :)
+GymTrack also uses file handling to store user data, ensuring that workout records persist between sessions.
+
+⚙️ Project Structure
+
+The project uses a custom header file, tracker.h, which contains function declarations and serves as a shared library for the different source files.
+
+The program is divided into multiple .c files, each responsible for a specific part of the system.
+
+File	Description
+tracker.h	Header file containing shared function declarations.
+features.c	Implements features such as calorie conversion and workout plan generation.
+input.c	Handles input validation and error handling.
+workout.c	Handles sorting and searching workout entries.
+storage.c	Manages workout data storage and retrieval.
+main.c	Contains the main program and menu system.
+
+✨ Planned Features
+
+The program will include the following menu options:
+
+ Log Sets – Record workout sets and exercise weights.
+ View History – Display previously recorded workouts.
+ Search – Search for specific workout entries.
+ Sort History – Organize workout records.
+ Edit Entry – Modify existing workout records.
+ Delete Entry – Remove unwanted entries.
+ Workout Plans – Generate simple workout plans.
+ Calorie Estimate – Calculate daily calorie targets.
+ Personal Records – Keep track of personal bests.
+ Save Data – Save workout information to files.
+ Load Data – Retrieve previously saved workout information.
+ Exit – Exit the program (save data first!).
+ 
+
+Programming Language: C
+Data Persistence: File Handling
+Project Type: Console-Based Application
+Header Files: Custom tracker.h library
+
+
+
+This project is part of our 1st Year CCP (Complex Coding Project) at NED University of Engineering & Technology.
+
+Built with C, teamwork, and plenty of debugging! :)
+
+⭐ GymTrack – Track your workouts, monitor your progress, and keep getting stronger!
