@@ -39,12 +39,21 @@ void calculateCalories(void)
         maxGoalWeight *= KG_TO_LB;
     }
 
-    if (!readDouble(unit == 1 ? "Current weight (kg): " : "Current weight (lb): ", minWeight, maxCurrentWeight, &currentWeight) ||
+    const char *currentWeightPrompt;
+    if (unit == 1)
+        currentWeightPrompt = "Current weight (kg): ";
+    else
+        currentWeightPrompt = "Current weight (lb): ";
 
-        !readDouble(unit == 1 ? "Goal weight (kg): " : "Goal weight (lb): ", minWeight, maxGoalWeight, &goalWeight) ||
+    const char *goalWeightPrompt;
+    if (unit == 1)
+        goalWeightPrompt = "Goal weight (kg): ";
+    else
+        goalWeightPrompt = "Goal weight (lb): ";
 
+    if (!readDouble(currentWeightPrompt, minWeight, maxCurrentWeight, &currentWeight) ||
+        !readDouble(goalWeightPrompt, minWeight, maxGoalWeight, &goalWeight) ||
         !readDouble("Maintenance calories (kcal/day): ", 1, 10000, &maintenanceCalories) ||
-
         !readDouble("Duration (months): ", 0.01, 120, &months))
         return;
 
@@ -54,35 +63,56 @@ void calculateCalories(void)
     double dailyAdjustment = (weightDifference * calorieFactor) / days;
     double dailyCalories = maintenanceCalories + dailyAdjustment;
 
-    double amount = weightDifference < 0 ? -weightDifference : weightDifference;
+    double amount;
+    if (weightDifference < 0)
+        amount = -weightDifference;
+    else
+        amount = weightDifference;
 
     double convertedDifference;
 
-    convertWeight(amount, unit == 1, &convertedDifference);
+    int useKilograms;
+    if (unit == 1)
+        useKilograms = 1;
+    else
+        useKilograms = 0;
 
-    const char *selectedUnit = unit == 1 ? "kg" : "lb";
-    const char *otherUnit = unit == 1 ? "lb" : "kg";
+    convertWeight(amount, useKilograms, &convertedDifference);
+
+    const char *selectedUnit;
+    const char *otherUnit;
+
+    if (unit == 1)
+    {
+        selectedUnit = "kg";
+        otherUnit = "lb";
+    }
+    else
+    {
+        selectedUnit = "lb";
+        otherUnit = "kg";
+    }
 
     if (weightDifference > 0 && dailyCalories > 0)
     {
         puts("\n--- BULKING PLAN ---");
 
-        printf("Weight to gain: %.2f %s | %.2f %s\n", amount, selectedUnit, convertedDifference, otherUnit);
+        printf("Weight to gain: %.2f %s | %.2f %s\n",
+               amount, selectedUnit, convertedDifference, otherUnit);
 
         printf("Target duration: %.1f months\n", months);
         printf("Estimated daily calories: %.0f kcal\n", dailyCalories);
     }
-
     else if (weightDifference < 0 && dailyCalories > 0)
     {
         puts("\n--- CUTTING PLAN ---");
 
-        printf("Weight to lose: %.2f %s | %.2f %s\n", amount, selectedUnit, convertedDifference, otherUnit);
+        printf("Weight to lose: %.2f %s | %.2f %s\n",
+               amount, selectedUnit, convertedDifference, otherUnit);
 
         printf("Target duration: %.1f months\n", months);
         printf("Estimated daily calories: %.0f kcal\n", dailyCalories);
     }
-
     else if (weightDifference == 0)
     {
         puts("\n--- MAINTENANCE PLAN ---");
@@ -90,14 +120,12 @@ void calculateCalories(void)
 
         printf("Estimated daily calories: %.0f kcal\n", maintenanceCalories);
     }
-
     else
     {
         puts("The calculated calorie target is invalid.");
         puts("Choose a more realistic goal or longer duration.");
     }
 }
-
 // Workout Plan Generator
 void generatePlan(void)
 {
