@@ -1,6 +1,6 @@
- GymTrack – Gym & Health Tracker
+GymTrack – Gym & Health Tracker
 
-(In Progress..)
+(In Progress...)
 
 📌 Project Introduction
 
@@ -10,47 +10,42 @@ The system records the weights used for each exercise, creates simple workout pl
 
 GymTrack also uses file handling to store user data, ensuring that workout records persist between sessions.
 
-⚙️ Project Structure
+⚙️ Project Structure:
 
 The project uses a custom header file, tracker.h, which contains function declarations and serves as a shared library for the different source files.
 
 The program is divided into multiple .c files, each responsible for a specific part of the system.
 
-File	Description
-tracker.h	Header file containing shared function declarations.
-features.c	Implements features such as calorie conversion and workout plan generation.
-input.c	Handles input validation and error handling.
-workout.c	Handles sorting and searching workout entries.
-storage.c	Manages workout data storage and retrieval.
-main.c	Contains the main program and menu system.
+File	Description:
 
-✨ Planned Features
+1.tracker.h | Header file containing shared function declarations.
+2.features.c | Implements features such as calorie conversion and workout plan generation.
+3.input.c | Handles input validation and error handling.
+4.workout.c | Handles sorting and searching workout entries.
+5.storage.c | Manages workout data storage and retrieval.
+6.main.c | Contains the main program and menu system.
+
+Planned Features:
 
 The program will include the following menu options:
 
- Log Sets – Record workout sets and exercise weights.
- View History – Display previously recorded workouts.
- Search – Search for specific workout entries.
- Sort History – Organize workout records.
- Edit Entry – Modify existing workout records.
- Delete Entry – Remove unwanted entries.
- Workout Plans – Generate simple workout plans.
- Calorie Estimate – Calculate daily calorie targets.
- Personal Records – Keep track of personal bests.
- Save Data – Save workout information to files.
- Load Data – Retrieve previously saved workout information.
- Exit – Exit the program (save data first!).
- 
+1.Log Sets – Record workout sets and exercise weights.
+2.View History – Display previously recorded workouts.
+3.Search – Search for specific workout entries.
+4.Sort History – Organize workout records.
+5.Edit Entry – Modify existing workout records.
+6.Delete Entry – Remove unwanted entries.
+7.Workout Plans – Generate simple workout plans.
+8.Calorie Estimate – Calculate daily calorie targets.
+9.Personal Records – Keep track of personal bests.
+10.Save Data – Save workout information to files.
+11.Load Data – Retrieve previously saved workout information.
+12.Exit – Exit the program.
 
 Programming Language: C
-Data Persistence: File Handling
+
 Project Type: Console-Based Application
+
 Header Files: Custom tracker.h library
 
-
-
 This project is part of our 1st Year CCP (Complex Coding Project) at NED University of Engineering & Technology.
-
-Built with C, teamwork, and plenty of debugging! :)
-
-⭐ GymTrack – Track your workouts, monitor your progress, and keep getting stronger!
